@@ -20,7 +20,7 @@ public class FirstTest {
 
     Timestamp timestamp;
 
-       @BeforeClass
+    @BeforeClass
     public static void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
         driver = new ChromeDriver();
@@ -29,7 +29,7 @@ public class FirstTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://www.google.com/intl/ru/gmail/about/#");
-       }
+    }
 
 
     @Test
@@ -39,12 +39,21 @@ public class FirstTest {
       homePage.wrEmail();
       homePage.sendEmails();
       homePage.incEmailClick();
-      homePage.zalupaCheck();
+        //Check if zalupa was send
+      List<WebElement> mailList = driver.findElements(By.xpath("//span[@class='bog']/b"));
+        int zalupaFound = 0;
+        for (WebElement row: mailList) {
+            if (row.getText().equals("zalupa")) {
+                zalupaFound += 1;
+            }
       }
 
+      Assert.assertEquals(zalupaFound, 1); 
+    }
+
     @AfterClass
-       public static void tearDown() {
-       driver.quit();
+    public static void tearDown() {
+      driver.quit();
     }
 }
 
