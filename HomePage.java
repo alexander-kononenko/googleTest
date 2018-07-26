@@ -60,25 +60,6 @@ public class HomePage {
     public void incEmailClick(){
         incEmail.click();
     }
-
-
-    //Check if zalupa was send
-    public void zalupaCheck(){
-    List<WebElement> mailList = driver.findElements(By.xpath("//span[@class='bog']/b"));
-        int zalupaFound = 0;
-        for (WebElement row: mailList) {
-        if (row.getText().equals("zalupa")) {
-            zalupaFound += 1;
-        }
-    }
-
-          Assert.assertEquals(zalupaFound, 1); //zalupaFound == 1;
-        System.out.println(zalupaFound);
-
-
-}
-
-
 }
 
 
