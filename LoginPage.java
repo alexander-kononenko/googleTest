@@ -14,7 +14,7 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-        private  WebDriver driver;
+    private  WebDriver driver;
 
     //Login Button
     @FindBy(xpath ="//a[@data-g-label='Sign in']")
@@ -39,10 +39,10 @@ public class LoginPage {
     public  WebElement passWait() {
         WebDriverWait waitForPass = new WebDriverWait(driver, 10);
         return  waitForPass.until(ExpectedConditions.elementToBeClickable(PassField));
-        }
-        public void passInput() {
+    }
+    public void passInput() {
         this.passWait().sendKeys("KerHemHanaycty7\n");
-        }
+    }
 
 }
 
